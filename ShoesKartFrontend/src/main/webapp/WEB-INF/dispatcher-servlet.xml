@@ -19,5 +19,9 @@
 		</property>
 	</bean>
 
-	<mvc:resources mapping="/assets/images/**" location="WEB-INF/assets/images/" />
+	<mvc:resources mapping="/assets/images/**" location="/assets/images/" />
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">		
+		<property name="maxUploadSize" value="100000" />
+	</bean>
 </beans>

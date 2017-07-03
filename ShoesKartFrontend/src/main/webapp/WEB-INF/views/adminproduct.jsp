@@ -20,7 +20,7 @@
 <body>
 
 	<div>
-		<form:form method = "POST" action = "/ShoesKartFrontend/admin/product/add" modelAttribute = "product">
+		<form:form method = "POST" action = "/ShoesKartFrontend/admin/product/add" modelAttribute = "product" enctype="multipart/form-data">
 			
 			<div class="form-group">
 				 <form:hidden path="prodid"/>
@@ -54,6 +54,12 @@
 					</form:select>
 			</div>
 			
+			<div class="form-group">
+				<label>Upload Image:</label>
+				 <form:input type = "file"
+					class="form-control" path="pimage"/>
+			</div>
+			
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form:form>
 
@@ -85,6 +91,7 @@
 							<td>${prodItem.price }</td>
 							<td>${prodItem.quantity}</td>
 							<td>${prodItem.cat.catname}</td>
+							<td><img src = "<c:url value = "/assets/images/${prodItem.name}.jpg"/>" height="50px" width="50px"/></td>
 							<td><a class="btn btn-warning"
 								href="/ShoesKartFrontend/admin/product/update/${prodItem.prodid}">Edit</a></td>
 							<td><a class="btn btn-danger"

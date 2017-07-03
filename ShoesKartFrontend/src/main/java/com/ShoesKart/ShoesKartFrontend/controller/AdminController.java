@@ -1,7 +1,12 @@
 package com.ShoesKart.ShoesKartFrontend.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,6 +61,13 @@ public class AdminController {
 	public String removeCat(@PathVariable("id")int id)
 	{
 		System.out.println("In delete method");
+		List <Product> products = productDao.getAll();
+		for (Product product : products){
+			if(product.getCat().getCatid() == id){
+				product.setCat(null);
+				productDao.insertUpdate(product);
+			}
+		}
 		categoryDao.delete(categoryDao.getById(id));
 		return "redirect:/admin/category";
 	}
@@ -122,7 +134,25 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/product/add")
-	public String addProduct(@ModelAttribute("product") Product product){
+	public String addProduct(@ModelAttribute("product") Product product,HttpServletRequest request){
+		
+		String path = "C:\\Users\\ARNAB\\git\\ShoesKartFrontend\\src\\main\\webapp\\assets\\images\\";
+		String fileinfo = path + product.getName() + ".jpg";
+		File f = new File(fileinfo);
+		if(!product.getPimage().isEmpty()){
+			
+			try{
+				 byte[] bytes=product.getPimage().getBytes();
+	             BufferedOutputStream bs=new BufferedOutputStream(new FileOutputStream(f));
+	             bs.write(bytes);
+	             bs.close();
+				
+			}
+			catch(Exception e){
+				System.out.print(e.getMessage());
+			}
+		}
+		
 		product.setCat(categoryDao.getById(product.getCat().getCatid()));
 		productDao.insertUpdate(product);
 		return "redirect:/admin/product";
