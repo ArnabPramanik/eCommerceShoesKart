@@ -37,6 +37,7 @@ public class ProductTestCase {
 		prd.setName("p1");
 		prd.setDescription("d1");
 		prd.setPrice(234);
+		prd.setSuppid(1);
 		prd.setQuantity(20);
 		prd.setCat(categoryDao.getById(1));
 		boolean result=productDao.insertUpdate(prd);

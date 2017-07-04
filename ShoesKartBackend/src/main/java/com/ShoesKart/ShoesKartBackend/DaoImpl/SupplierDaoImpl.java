@@ -38,8 +38,8 @@ public class SupplierDaoImpl implements SupplierDao{
 
 	public List<Supplier> getAll() {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = (Query) session.createQuery("from Supplier").list();
-		return (List<Supplier>) query;
+		List <Supplier> suppliers = session.createQuery("from Supplier").list();
+		return suppliers;
 	}
 	
 

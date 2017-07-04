@@ -1,10 +1,14 @@
 package com.ShoesKart.ShoesKartBackend.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Product {
@@ -14,8 +18,24 @@ public class Product {
 	String name;
 	int quantity;
 	int price;
+	int suppid;
+	public int getSuppid() {
+		return suppid;
+	}
+	public void setSuppid(int suppid) {
+		this.suppid = suppid;
+	}
 	String description;
-	@ManyToOne
+	@Transient
+	MultipartFile pimage;
+	
+	public MultipartFile getPimage() {
+		return pimage;
+	}
+	public void setPimage(MultipartFile pimage) {
+		this.pimage = pimage;
+	}
+	@ManyToOne //(cascade = CascadeType.PERSIST)
 	Category cat;
 	public int getProdid() {
 		return prodid;
