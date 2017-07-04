@@ -130,8 +130,8 @@
 				</div>
 				<ul class="nav navbar-nav">
 					<li><a href="index">Home</a></li>
-					<li><a href="#">Sign In</a></li>
-					<li><a href="#">Sign Up</a></li>
+					<li><a href="/ShoesKartFrontend/signin">Sign In</a></li>
+					<li><a href="/ShoesKartFrontend/signup">Sign Up</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a class="dropdown-toggle"

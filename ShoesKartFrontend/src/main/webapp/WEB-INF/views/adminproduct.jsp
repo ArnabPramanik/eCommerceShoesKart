@@ -55,6 +55,14 @@
 			</div>
 			
 			<div class="form-group">
+				<label>Supplier List:</label>
+				 <form:select path="suppid">
+						<form:option value="0" label="------Select----" />
+						<form:options items="${supMap}"/>
+					</form:select>
+			</div>
+			
+			<div class="form-group">
 				<label>Upload Image:</label>
 				 <form:input type = "file"
 					class="form-control" path="pimage"/>
@@ -78,6 +86,7 @@
 						<th>Price</th>
 						<th>Quantity</th>
 						<th>Category</th>
+						<th>SupplierID</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -91,6 +100,7 @@
 							<td>${prodItem.price }</td>
 							<td>${prodItem.quantity}</td>
 							<td>${prodItem.cat.catname}</td>
+							<td>${prodItem.suppid}</td>
 							<td><img src = "<c:url value = "/assets/images/${prodItem.name}.jpg"/>" height="50px" width="50px"/></td>
 							<td><a class="btn btn-warning"
 								href="/ShoesKartFrontend/admin/product/update/${prodItem.prodid}">Edit</a></td>

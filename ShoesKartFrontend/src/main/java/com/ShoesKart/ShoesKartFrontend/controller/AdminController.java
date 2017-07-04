@@ -124,11 +124,12 @@ public class AdminController {
 		m.addAttribute("product", product);
 		m.addAttribute("prodList", products);
 		List <Category> categories = categoryDao.getAll();
-		/*LinkedHashMap <Category, String> lh = new LinkedHashMap <Category, String>();
-		for (Category cat : categories){
-			lh.put(cat,cat.getCatname());
+		LinkedHashMap <Integer, String> lh = new LinkedHashMap <Integer, String>();
+		List <Supplier> suppliers = supplierDao.getAll();
+		for (Supplier supplier : suppliers){
+			lh.put(supplier.getId(),supplier.getName());
 		}
-		m.addAttribute("catList",lh);*/
+		m.addAttribute("supMap",lh);
 		m.addAttribute("catList",categories);
 		return "adminproduct";
 	}
