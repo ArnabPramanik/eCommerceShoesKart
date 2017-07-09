@@ -126,15 +126,14 @@
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="index">ShoesKart</a>
+					<a class="navbar-brand" href="/ShoesKartFrontend/user/home">ShoesKart</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href="index">Home</a></li>
-					<li><a href="/ShoesKartFrontend/login">Sign In</a></li>
-					<li><a href="/ShoesKartFrontend/signup">Sign Up</a></li>
+					<li><a href="/ShoesKartFrontend/user/home">Home</a></li>
+					<li><a href="/ShoesKartFrontend/perform_logout">Logout</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/ShoesKartFrontend/product"> Products</a></li>
+					<li><a href="/ShoesKartFrontend/user/product"> Products</a></li>
 					<li><a href="#"> Contact Us</a></li>
 					<li><a href="#"> About Us</a></li>
 				</ul>

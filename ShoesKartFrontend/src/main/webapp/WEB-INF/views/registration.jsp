@@ -16,35 +16,43 @@
 </head>
 
 <body>
-	<form:form method = "POST" action = "/ShoesKartFrontend/register" modelAttribute = "user">
+	<form:form method="POST" action="/ShoesKartFrontend/register"
+		modelAttribute="user">
 		<div class="form-group">
-			<label>User name</label> <form:input class="form-control"
-				path="username"/>
+			<label>User name</label>
+			<form:input class="form-control" path="username" />
 		</div>
 		<div class="form-group">
-			<label>Password:</label> <form:input type="password" class="form-control"
-				path="password"/>
+			<label>Password:</label>
+			<form:input type="password" class="form-control" path="password" />
 		</div>
 		<div class="form-group">
-			<label>Email address:</label> <form:input type="email"
-				class="form-control" path="email"/>
+			<label>Email address:</label>
+			<form:input type="email" class="form-control" path="email" />
 		</div>
 		<div class="form-group">
-			<label>Name</label> <form:input type="text" class="form-control"
-				path="custname"/>
+			<label>Name</label>
+			<form:input type="text" class="form-control" path="custname" />
 		</div>
 		<div class="form-group">
-			<label>Role</label> <form:input type="text" class="form-control"
-				path="role"/>
+			<label>Role</label>
+			<form:select path="role">
+				<form:option value="0" label="select" />
+				<form:options items="${role_list}" />
+			</form:select>
+
 		</div>
 		<div class="form-group">
-			<label>Address</label> <form:input type="text" class="form-control"
-				path="address"/>
+			<label>Address</label>
+			<form:input type="text" class="form-control" path="address" />
 		</div>
 		<div class="form-group">
-			<label>Mobile</label> <form:input type="text" class="form-control"
-				path="mobile"/>
+			<label>Mobile</label>
+			<form:input type="text" class="form-control" path="mobile" />
 		</div>
+	  <div class="form-group">
+			<form:hidden class="form-control" path="enabled" value = "TRUE" />
+		</div> 
 		<button type="submit" class="btn btn-default">Submit</button>
 	</form:form>
 </body>

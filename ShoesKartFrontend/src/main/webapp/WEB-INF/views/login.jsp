@@ -17,7 +17,7 @@
 
 
 <body>
-	<form method = "POST" action = "/ShoesKartFrontend/login">
+	<form method = "POST" action ="/ShoesKartFrontend/perform_login">
 		<div class="form-group">
 			<label>User name</label> <input class="form-control"
 				name="username"/>

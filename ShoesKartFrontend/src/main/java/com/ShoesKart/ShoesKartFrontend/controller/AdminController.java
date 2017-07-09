@@ -183,4 +183,9 @@ public class AdminController {
 		return "redirect:/admin/product";
 	}
 	
+	@RequestMapping("/home")
+	public String showUserHome(){
+		return "redirect:/login_success";
+	}
+	
 }
