@@ -35,7 +35,17 @@ public class UserController {
 
 	@Autowired
 	CartDao cartDao;
-
+	@RequestMapping("/contactus")
+	public String viewContact(){
+		
+		return "usercontact";
+	}
+	
+	@RequestMapping("/aboutus")
+	public String vieeweAbout(){
+		
+		return "userabout";
+	}
 	@RequestMapping("/product")
 	public String showProduct(Model m) {
 
@@ -50,7 +60,12 @@ public class UserController {
 		return "redirect:/login_success";
 	}
 
-	
+	@RequestMapping("/product/view/{prodId}")
+	public String viewProduct(@PathVariable("prodId") int prodId, Model m) {
+		m.addAttribute("product", productDao.getById(prodId));
+
+		return "userproductfocus";
+	}
 
 	@RequestMapping("/product/addtocart/{prodid}")
 	public String addCart(@PathVariable("prodid") int prodid,// @RequestParam("quantity") int quantity,
@@ -168,8 +183,8 @@ public class UserController {
 	for(Cart cart:cartList)
 	{
 		grandtotal=grandtotal+(cart.getQuantity()*cart.getPrice());
-		cart.setStatus("Y");
-		cartDao.insertUpdate(cart);
+		//cart.setStatus("Y");
+		//cartDao.insertUpdate(cart);
 	}
 		
 		
@@ -181,8 +196,13 @@ public class UserController {
 	}
 	
 	@RequestMapping("/payment")
-	public String paymentProcess(){
-		
+	public String paymentProcess(Model m, HttpSession session){
+		String username=(String) session.getAttribute("username");
+		List<Cart> cartList=cartDao.getAll(username);
+		for(Cart cart: cartList){
+			cart.setStatus("Y");
+			cartDao.insertUpdate(cart);
+		}
 		return "thankyou";
 	}
 

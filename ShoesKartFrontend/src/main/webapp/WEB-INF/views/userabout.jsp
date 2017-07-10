@@ -1,14 +1,15 @@
-<%@ page language="java" contentType="text/html"%>
-
-
-
 <html>
 <head>
-<title>Registration page</title>
+
+<title>ContactUs</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Lato"
+	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat"
+	rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -16,8 +17,6 @@
 </head>
 
 <style>
-
-  
 .navbar {
 	background-color: #ff0000;
 	padding-top: 10px;
@@ -75,26 +74,26 @@
 .navbar-default .navbar-header>.navbar-brand:focus {
 	color: black;
 }
-
 </style>
-<body>
 
+
+<body>
 
 	<div class="container-fluid">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="index">ShoesKart</a>
+					<a class="navbar-brand" href="/ShoesKartFrontend/user/home">ShoesKart</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href="index">Home</a></li>
-					<li><a href="/ShoesKartFrontend/login">Sign In</a></li>
-					<li><a href="/ShoesKartFrontend/signup">Sign Up</a></li>
+					<li><a href="/ShoesKartFrontend/user/home">Home</a></li>
+					<li><a href="/ShoesKartFrontend/perform_logout">Logout</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/ShoesKartFrontend/product"> Products</a></li>
-					<li><a href="/ShoesKartFrontend/contactus"> Contact Us</a></li>
-					<li><a href="/ShoesKartFrontend/aboutus"> About Us</a></li>
+					<li><a href="/ShoesKartFrontend/user/product"> Products</a></li>
+					<li><a href="/ShoesKartFrontend/user/cart"> Cart</a></li>
+					<li><a href="/ShoesKartFrontend/user/contactus"> Contact Us</a></li>
+					<li><a href="/ShoesKartFrontend/user/aboutus"> About Us</a></li>
 				</ul>
 
 			</div>
@@ -102,18 +101,17 @@
 	</div>
 
 
-
-
-	<form method="POST" action="/ShoesKartFrontend/perform_login">
-		<div class="form-group">
-			<label>User name</label> <input class="form-control" name="username" required="required" />
+	<div class="container">
+		<div class="jumbotron">
+			<h1>ABOUT US</h1>
+			<p>We offer low cost high quality products. We also offer fast
+				deliveries to nearly every location around the world. We have
+				100,000 active users at the moment. Come, join us now!</p>
 		</div>
+	</div>
 
-		<div class="form-group">
-			<label>Password:</label> <input type="password" class="form-control"
-				name="password" required = "required" />
-		</div>
-		<button type="submit" class="btn btn-default">Submit</button>
-	</form>
+
 </body>
+
+
 </html>

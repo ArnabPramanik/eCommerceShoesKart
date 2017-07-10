@@ -38,7 +38,17 @@ public class AdminController {
 	
 	@Autowired
 	ProductDao productDao;
+	@RequestMapping("/contactus")
+	public String viewContact(){
+		
+		return "admincontact";
+	}
 	
+	@RequestMapping("/aboutus")
+	public String vieeweAbout(){
+		
+		return "adminabout";
+	}
 	@RequestMapping("/category")
 	public String viewCategory(Model m)
 	{
@@ -62,13 +72,24 @@ public class AdminController {
 	{
 		System.out.println("In delete method");
 		List <Product> products = productDao.getAll();
+		
 		for (Product product : products){
+			
+			try{
 			if(product.getCat().getCatid() == id){
 				product.setCat(null);
 				productDao.insertUpdate(product);
 			}
+			}
+			catch(Exception e){
+				
+			}
 		}
+		
+		
 		categoryDao.delete(categoryDao.getById(id));
+		
+		
 		return "redirect:/admin/category";
 	}
 	
@@ -173,6 +194,12 @@ public class AdminController {
 		}
 		m.addAttribute("catList",lh);*/
 		m.addAttribute("catList",categories);
+		LinkedHashMap <Integer, String> lh = new LinkedHashMap <Integer, String>();
+		List <Supplier> suppliers = supplierDao.getAll();
+		for (Supplier supplier : suppliers){
+			lh.put(supplier.getId(),supplier.getName());
+		}
+		m.addAttribute("supMap",lh);
 		return "adminproduct";
 	}
 	

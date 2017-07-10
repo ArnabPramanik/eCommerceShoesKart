@@ -72,7 +72,7 @@ public class IndexController {
 		List <Product> products = productDao.getAll();
 		m.addAttribute("prodList", products);
 
-		return "userproduct";
+		return "product";
 	}
 /*	@RequestMapping(value = "/perform_login", method = RequestMethod.POST)
 	public String logIn(@RequestParam("username")String username, @RequestParam("password")String password){
@@ -131,5 +131,15 @@ public class IndexController {
 		return "productfocus";
 	}
 	
+	@RequestMapping("/contactus")
+	public String viewContact(){
+		
+		return "contact";
+	}
 	
+	@RequestMapping("/aboutus")
+	public String vieeweAbout(){
+		
+		return "about";
+	}
 }

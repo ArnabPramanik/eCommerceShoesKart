@@ -1,18 +1,15 @@
-<%@ page language="java" contentType="text/html"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<html>
 <head>
-<title>Bootstrap Example</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+  <title>ContactUs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
 .navbar {
@@ -92,11 +89,8 @@
 	background-color: red !important;
 }
 </style>
-
-
 <body>
-
-	<div class="container-fluid">
+<div class="container-fluid">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -122,55 +116,10 @@
 		</nav>
 	</div>
 
-	<div>
-		<form:form modelAttribute="supplier"
-			action="/ShoesKartFrontend/admin/supplier/add" method="post">
-			<div class="form-group">
-				<form:hidden path="id" class="form-control" />
-			</div>
-			<div class="form-group">
-				<label for="name">Name:</label>
-				<form:input path="name" class="form-control" required = "required"/>
-			</div>
-			<div class="form-group">
-				<label for="address">Address:</label>
-				<form:input path="address" class="form-control" required = "required"/>
-			</div>
+		<h1 align = "center">You can contact us at </h1>
+      	<h1 align = "center"><span class="glyphicon glyphicon-map-marker"></span>Kolkata, India</h1>
+     	<h1 align = "center"><span class="glyphicon glyphicon-phone"></span>Phone: +919831744521</h1>
+      	<h1 align = "center"><span class="glyphicon glyphicon-envelope"></span>Email: arnab_pmk@yahoo.com</h1>
 
-			<button type="submit" class="btn btn-default">Submit</button>
-		</form:form>
-	</div>
-
-	<div class="container">
-		<div class="table-responsive">
-			<table class="table">
-				<thead>
-
-					<tr>
-						<th>Id</th>
-						<th>name</th>
-						<th>Address</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${supList}" var="supItem">
-						<tr>
-							<td>${supItem.id}</td>
-							<td>${supItem.name }</td>
-							<td>${supItem.address }</td>
-							<td><a class="btn btn-warning"
-								href="/ShoesKartFrontend/admin/supplier/update/${supItem.id}">Edit</a></td>
-							<td><a class="btn btn-danger"
-								href="/ShoesKartFrontend/admin/supplier/delete/${supItem.id}">Delete</a></td>
-
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-
-		</div>
-	</div>
 
 </body>

@@ -135,8 +135,8 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/ShoesKartFrontend/product"> Products</a></li>
-					<li><a href="#"> Contact Us</a></li>
-					<li><a href="#"> About Us</a></li>
+					<li><a href="/ShoesKartFrontend/contactus"> Contact Us</a></li>
+					<li><a href="/ShoesKartFrontend/aboutus"> About Us</a></li>
 				</ul>
 
 			</div>

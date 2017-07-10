@@ -1,20 +1,20 @@
-<%@ page language="java" contentType="text/html"%>
-
-
-
 <html>
 <head>
-<title>Registration page</title>
+
+<title>ContactUs</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Lato"
+	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat"
+	rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
 <style>
 
   
@@ -78,8 +78,6 @@
 
 </style>
 <body>
-
-
 	<div class="container-fluid">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -102,18 +100,17 @@
 	</div>
 
 
-
-
-	<form method="POST" action="/ShoesKartFrontend/perform_login">
-		<div class="form-group">
-			<label>User name</label> <input class="form-control" name="username" required="required" />
+	<div class="container">
+		<div class="jumbotron">
+			<h1>ABOUT US</h1>
+			<p>We offer low cost high quality products. We also offer fast
+				deliveries to nearly every location around the world. We have
+				100,000 active users at the moment. Come, join us now!</p>
 		</div>
+	</div>
 
-		<div class="form-group">
-			<label>Password:</label> <input type="password" class="form-control"
-				name="password" required = "required" />
-		</div>
-		<button type="submit" class="btn btn-default">Submit</button>
-	</form>
+
 </body>
+
+
 </html>

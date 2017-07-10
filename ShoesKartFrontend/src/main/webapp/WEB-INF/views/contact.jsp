@@ -1,23 +1,22 @@
-<%@ page language="java" contentType="text/html"%>
-
-
 
 <html>
 <head>
-<title>Registration page</title>
+
+<title>ContactUs</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Lato"
+	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat"
+	rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
 <style>
-
-  
 .navbar {
 	background-color: #ff0000;
 	padding-top: 10px;
@@ -75,10 +74,8 @@
 .navbar-default .navbar-header>.navbar-brand:focus {
 	color: black;
 }
-
 </style>
 <body>
-
 
 	<div class="container-fluid">
 		<nav class="navbar navbar-default">
@@ -101,19 +98,17 @@
 		</nav>
 	</div>
 
+	<h1 align="center">You can contact us at</h1>
+	<h1 align="center">
+		<span class="glyphicon glyphicon-map-marker"></span>Kolkata, India
+	</h1>
+	<h1 align="center">
+		<span class="glyphicon glyphicon-phone"></span>Phone: +919831744521
+	</h1>
+	<h1 align="center">
+		<span class="glyphicon glyphicon-envelope"></span>Email:
+		arnab_pmk@yahoo.com
+	</h1>
 
 
-
-	<form method="POST" action="/ShoesKartFrontend/perform_login">
-		<div class="form-group">
-			<label>User name</label> <input class="form-control" name="username" required="required" />
-		</div>
-
-		<div class="form-group">
-			<label>Password:</label> <input type="password" class="form-control"
-				name="password" required = "required" />
-		</div>
-		<button type="submit" class="btn btn-default">Submit</button>
-	</form>
 </body>
-</html>

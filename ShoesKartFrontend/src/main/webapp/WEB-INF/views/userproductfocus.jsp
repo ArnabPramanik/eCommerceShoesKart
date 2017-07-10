@@ -13,6 +13,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
+  
 .navbar {
 	background-color: #ff0000;
 	padding-top: 10px;
@@ -70,7 +71,6 @@
 .navbar-default .navbar-header>.navbar-brand:focus {
 	color: black;
 }
-
 ul>li {
 	margin-right: 25px;
 	font-weight: lighter;
@@ -202,21 +202,22 @@ div.section>div>input {
 }
 </style>
 <body>
+
 	<div class="container-fluid">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="index">ShoesKart</a>
+					<a class="navbar-brand" href="/ShoesKartFrontend/user/home">ShoesKart</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href="index">Home</a></li>
-					<li><a href="/ShoesKartFrontend/login">Sign In</a></li>
-					<li><a href="/ShoesKartFrontend/signup">Sign Up</a></li>
+					<li><a href="/ShoesKartFrontend/user/home">Home</a></li>
+					<li><a href="/ShoesKartFrontend/perform_logout">Logout</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/ShoesKartFrontend/product"> Products</a></li>
-					<li><a href="/ShoesKartFrontend/contactus"> Contact Us</a></li>
-					<li><a href="/ShoesKartFrontend/aboutus"> About Us</a></li>
+					<li><a href="/ShoesKartFrontend/user/product"> Products</a></li>
+					<li><a href="/ShoesKartFrontend/user/cart"> Cart</a></li>
+					<li><a href="/ShoesKartFrontend/user/contactus"> Contact Us</a></li>
+					<li><a href="/ShoesKartFrontend/user/aboutus"> About Us</a></li>
 				</ul>
 
 			</div>
@@ -245,7 +246,7 @@ div.section>div>input {
 						<h6 class="title-attr">Quantity</h6>
 						<div>
 
-							<input type="number" min = "1" value="1" name="quantity"  required = "required"/>
+							<input type="number" min = "1" value="1" name="quantity" required = "required" />
 
 						</div>
 					</div>

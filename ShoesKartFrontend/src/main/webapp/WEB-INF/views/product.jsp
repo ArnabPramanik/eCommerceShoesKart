@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html"%>
+<%@ page language="java" contentType="text/html" %>
 
-
-
-<html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
-<title>Registration page</title>
+<title>HomePage</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -77,8 +76,9 @@
 }
 
 </style>
-<body>
 
+
+<body>
 
 	<div class="container-fluid">
 		<nav class="navbar navbar-default">
@@ -101,19 +101,47 @@
 		</nav>
 	</div>
 
+	
+	
+	<div class="container">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
 
+					<tr>
+						<th>Id</th>
+						<th>name</th>
+						<th>Description</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Category</th>
+						<th>SupplierID</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${prodList}" var="prodItem">
+						<tr>
+							<td>${prodItem.prodid}</td>
+							<td>${prodItem.name }</td>
+							<td>${prodItem.description }</td>
+							<td>${prodItem.price }</td>
+							<td>${prodItem.quantity}</td>
+							<td>${prodItem.cat.catname}</td>
+							<td>${prodItem.suppid}</td>
+							<td><img src = "<c:url value = "/assets/images/${prodItem.name}.jpg"/>" height="50px" width="50px"/></td>
+							<td><a class="btn btn-warning"
+								href="/ShoesKartFrontend/product/view/${prodItem.prodid}">View</a></td>
+							<td><a class="btn btn-danger"
+								href="/ShoesKartFrontend/user/product/addtocart/${prodItem.prodid}">Add to Cart</a></td>
 
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 
-	<form method="POST" action="/ShoesKartFrontend/perform_login">
-		<div class="form-group">
-			<label>User name</label> <input class="form-control" name="username" required="required" />
 		</div>
-
-		<div class="form-group">
-			<label>Password:</label> <input type="password" class="form-control"
-				name="password" required = "required" />
-		</div>
-		<button type="submit" class="btn btn-default">Submit</button>
-	</form>
+	</div>
 </body>
 </html>

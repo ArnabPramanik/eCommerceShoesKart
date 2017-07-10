@@ -140,8 +140,8 @@
 							<li><a href="/ShoesKartFrontend/admin/product">product</a></li>
 							<li><a href="/ShoesKartFrontend/admin/supplier">supplier</a></li>
 						</ul></li>
-					<li><a href="#"> Contact Us</a></li>
-					<li><a href="#"> About Us</a></li>
+					<li><a href="/ShoesKartFrontend/admin/contactus"> Contact Us</a></li>
+					<li><a href="/ShoesKartFrontend/admin/aboutus"> About Us</a></li>
 				</ul>
 
 			</div>
