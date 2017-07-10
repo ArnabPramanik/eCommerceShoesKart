@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html"%>
 
-
-
-
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<html>
 <head>
 <title>HomePage</title>
 <meta charset="utf-8">
@@ -17,7 +14,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-
+<body>
 <div class="container">
 	<div class="table-responsive">
 		<table class="table">
@@ -25,7 +22,6 @@
 
 				<tr>
 					<th></th>
-					<th>cartItemId</th>
 					<th>productId</th>
 					<th>Name</th>
 					<th>Price</th>
@@ -38,16 +34,10 @@
 				<c:forEach items="${cartList}" var="cartItem">
 					<tr>
 						<td><img src = "<c:url value = "/assets/images/${cartItem.prodname}.jpg"/>" height="50px" width="50px"/></td>
-						<td>${cartItem.cartitemid}</td>
 						<td>${cartItem.prodid}</td>
 						<td>${cartItem.prodname }</td>
 						<td>${cartItem.price*cartItem.quantity}</td>
-						
-						<td><form action = "/ShoesKartFrontend/user/update/${cartItem.cartitemid}"><input type="text" value="${cartItem.quantity}" name="quantity"/><input type="submit" value="update"></form></td>
-						
-			
-							<td><a class="btn btn-danger"
-							href="/ShoesKartFrontend/user/delete/${cartItem.cartitemid}">Delete</a></td>
+						<td>${cartItem.quantity}</td>
 						
 
 					</tr>
@@ -57,7 +47,21 @@
 
 	</div>
 </div>
-<a class="btn btn-danger" href = "/ShoesKartFrontend/user/home">Continue Shopping</a>
-<a class = "btn btn-danger" href = "/ShoesKartFrontend/user/checkout">Purchase</a>
+<br/>
+GrandTotal = ${grandtotal}
+<br/>
+<form action="/ShoesKartFrontend/user/payment" method="POST">
+payment type <div class="radio" >
+  <label><input type="radio" name="optradio">Cash</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="optradio">Credit Card</label>
+</div>
+shipping address<input type="text" name="shipping" required/>
+
+
+
+<input type="submit" value="payment "name="submit"/>
+</form>
 </body>
 </html>

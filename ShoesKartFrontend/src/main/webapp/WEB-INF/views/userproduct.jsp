@@ -50,9 +50,9 @@
 							<td>${prodItem.suppid}</td>
 							<td><img src = "<c:url value = "/assets/images/${prodItem.name}.jpg"/>" height="50px" width="50px"/></td>
 							<td><a class="btn btn-warning"
-								href="/ShoesKartFrontend/user/product/view/${prodItem.prodid}">View</a></td>
+								href="/ShoesKartFrontend/product/view/${prodItem.prodid}">View</a></td>
 							<td><a class="btn btn-danger"
-								href="/ShoesKartFrontend/user/product/cart/${prodItem.prodid}">Add to Cart</a></td>
+								href="/ShoesKartFrontend/user/product/addtocart/${prodItem.prodid}">Add to Cart</a></td>
 
 						</tr>
 					</c:forEach>

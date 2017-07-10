@@ -164,26 +164,27 @@ div.section>div>input {
 				<h3 style="margin-top: 0px;">${product.price}</h3>
 
 				<!-- Detalles especificos del producto -->
-				
+				<form action = "/ShoesKartFrontend/user/product/addtocart2/${product.prodid}">
 				<div class="section" style="padding-bottom: 20px;">
 					<h6 class="title-attr">
 						Quantity
 					</h6>
 					<div>
 						
-						<input value="1" />
+						<input type = "text" value="1" name = quantity />
 						
 					</div>
 				</div>
 
 				<!-- Botones de compra -->
 				<div class="section" style="padding-bottom: 20px;">
-					<a class="btn btn-success" href = "/ShoesKartFrontend/user/product/cart/${product.prodid}">
+					<button class="btn btn-success" type = "submit">
 						<span style="margin-right: 20px"
 							class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 						Add to Cart
-					</a>
+					</button>
 				</div>
+				</form>
 			</div>
 
 			<div class="col-xs-9">

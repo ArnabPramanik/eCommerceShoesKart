@@ -3,15 +3,20 @@ package com.ShoesKart.ShoesKartFrontend.controller;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ShoesKart.ShoesKartBackend.Dao.CartDao;
 import com.ShoesKart.ShoesKartBackend.Dao.CategoryDao;
 import com.ShoesKart.ShoesKartBackend.Dao.ProductDao;
 import com.ShoesKart.ShoesKartBackend.Dao.SupplierDao;
+import com.ShoesKart.ShoesKartBackend.model.Cart;
 import com.ShoesKart.ShoesKartBackend.model.Category;
 import com.ShoesKart.ShoesKartBackend.model.Product;
 import com.ShoesKart.ShoesKartBackend.model.Supplier;
@@ -21,37 +26,164 @@ import com.ShoesKart.ShoesKartBackend.model.Supplier;
 public class UserController {
 	@Autowired
 	CategoryDao categoryDao;
-	
+
 	@Autowired
 	SupplierDao supplierDao;
-	
+
 	@Autowired
 	ProductDao productDao;
-	
-	@RequestMapping("/product")
-	public String showProduct(Model m){
 
-		List <Product> products = productDao.getAll();
+	@Autowired
+	CartDao cartDao;
+
+	@RequestMapping("/product")
+	public String showProduct(Model m) {
+
+		List<Product> products = productDao.getAll();
 		m.addAttribute("prodList", products);
 
 		return "userproduct";
 	}
-	
+
 	@RequestMapping("/home")
-	public String showUserHome(){
+	public String showUserHome() {
 		return "redirect:/login_success";
 	}
+
 	
-	@RequestMapping("/product/view/{prodId}")
-	public String viewProduct(@PathVariable("prodId") int prodId,Model m){
-		m.addAttribute("product", productDao.getById(prodId));
+
+	@RequestMapping("/product/addtocart/{prodid}")
+	public String addCart(@PathVariable("prodid") int prodid,// @RequestParam("quantity") int quantity,
+			HttpSession session, Model m) {
+
+		Product product = productDao.getById(prodid);
+
 		
-		return "productfocus";
+			Cart cart = new Cart();
+			String username = (String) session.getAttribute("username");
+			//cart.setQuantity(quantity);
+			cart.setStatus("N");
+			cart.setUsername(username);
+			cart.setProdid(prodid);
+
+			cart.setProdname(product.getName());
+			cart.setPrice(product.getPrice());
+
+			cartDao.insertUpdate(cart);
+
+			return "redirect:/user/cart";
+		
+
 	}
-	
-	@RequestMapping("/product/cart/{prdId}")
-	public String viewCart(){
+
+	@RequestMapping("/product/addtocart2/{prodid}")
+	public String addCart2(@PathVariable("prodid") int prodid, @RequestParam("quantity") int quantity,
+			HttpSession session, Model m) {
+
+		Product product = productDao.getById(prodid);
+
 		
+			Cart cart = new Cart();
+			String username = (String) session.getAttribute("username");
+			cart.setQuantity(quantity);
+			cart.setStatus("N");
+			cart.setUsername(username);
+			cart.setProdid(prodid);
+
+			cart.setProdname(product.getName());
+			cart.setPrice(product.getPrice());
+
+			cartDao.insertUpdate(cart);
+
+			return "redirect:/user/cart";
+		
+
+	}
+
+	
+	@RequestMapping("/cart")
+	public String viewCart(Model m, HttpSession session) {
+
+		String username = (String) session.getAttribute("username");
+
+		List<Cart> cartList = cartDao.getAll(username);
+		m.addAttribute("cartList", cartList);
+
 		return "cart";
 	}
+
+	@RequestMapping("/update/{citemid}")
+	public String updateCart(@PathVariable("citemid") int citemid, @RequestParam("quantity") int quantity,
+			HttpSession session, Model m) {
+
+		if (quantity > 0) {
+
+			Cart cart = (Cart) cartDao.getById(citemid);
+			cart.setQuantity(quantity);
+			cartDao.insertUpdate(cart);
+
+			String username = (String) session.getAttribute("username");
+
+			List<Cart> cartlist = cartDao.getAll(username);
+			m.addAttribute("cartlist", cartlist);
+
+			return "redirect:/user/cart";
+
+		} else {
+			return "quantity";
+		}
+	}
+	@RequestMapping("/delete/{citemid}")
+	public String deleteCart(@PathVariable("citemid") int citemid,HttpSession session,Model m)
+	{
+		
+
+		
+
+		
+		Cart cart=(Cart)cartDao.getById(citemid);
+		
+		cartDao.delete(cart);
+		
+	String username=(String) session.getAttribute("username");
+		
+		List<Cart> cartlist=cartDao.getAll(username);
+		m.addAttribute("cartlist",cartlist);
+		
+		
+		
+		return "redirect:/user/cart";
+		
+	}
+	
+	@RequestMapping("/checkout")
+	public String checkout(Model m,HttpSession session)
+	{
+		
+		String username=(String) session.getAttribute("username");
+		List<Cart> cartList=cartDao.getAll(username);
+		
+		int grandtotal=0;
+		
+	for(Cart cart:cartList)
+	{
+		grandtotal=grandtotal+(cart.getQuantity()*cart.getPrice());
+		cart.setStatus("Y");
+		cartDao.insertUpdate(cart);
+	}
+		
+		
+		
+		m.addAttribute("grandtotal",grandtotal);
+		m.addAttribute("cartList",cartList);
+		
+		return "/checkout";
+	}
+	
+	@RequestMapping("/payment")
+	public String paymentProcess(){
+		
+		return "thankyou";
+	}
+
 }
