@@ -88,7 +88,8 @@ public class UserController {
 
 			return "redirect:/user/cart";
 		
-
+		
+		
 	}
 
 	@RequestMapping("/product/addtocart2/{prodid}")
@@ -96,7 +97,7 @@ public class UserController {
 			HttpSession session, Model m) {
 
 		Product product = productDao.getById(prodid);
-
+		if(quantity <= product.getQuantity()){
 		
 			Cart cart = new Cart();
 			String username = (String) session.getAttribute("username");
@@ -111,7 +112,10 @@ public class UserController {
 			cartDao.insertUpdate(cart);
 
 			return "redirect:/user/cart";
-		
+		}
+		else{
+			return "quantity";
+		}
 
 	}
 
@@ -131,9 +135,12 @@ public class UserController {
 	public String updateCart(@PathVariable("citemid") int citemid, @RequestParam("quantity") int quantity,
 			HttpSession session, Model m) {
 
-		if (quantity > 0) {
+		//if (quantity < 0) {
 
 			Cart cart = (Cart) cartDao.getById(citemid);
+			Product product = productDao.getById(cart.getProdid());
+			if(quantity <= product.getQuantity())
+			{
 			cart.setQuantity(quantity);
 			cartDao.insertUpdate(cart);
 
@@ -143,10 +150,15 @@ public class UserController {
 			m.addAttribute("cartlist", cartlist);
 
 			return "redirect:/user/cart";
+			}
+			else{
+				return "quantity";
+			}
+			
 
-		} else {
-			return "quantity";
-		}
+	//	} else {
+	//		return "quantity";
+	//	}
 	}
 	@RequestMapping("/delete/{citemid}")
 	public String deleteCart(@PathVariable("citemid") int citemid,HttpSession session,Model m)
