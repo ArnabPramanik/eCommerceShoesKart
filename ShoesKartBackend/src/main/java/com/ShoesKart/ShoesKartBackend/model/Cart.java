@@ -10,12 +10,22 @@ public class Cart {
 	@GeneratedValue
     int cartitemid;
     int  prodid,quantity = 1,price;
-	
-	
-	String username;
+	int cartid;
+    String username;
 	
 	
 	String prodname,status;
+	public int getCartid() {
+		return cartid;
+	}
+
+
+	public void setCartid(int cartid) {
+		this.cartid = cartid;
+	}
+
+
+	
 	
 	public int getCartitemid() {
 		return cartitemid;

@@ -18,13 +18,13 @@ public class Product {
 	String name;
 	int quantity;
 	int price;
-	int suppid;
-	public int getSuppid() {
-		return suppid;
-	}
-	public void setSuppid(int suppid) {
-		this.suppid = suppid;
-	}
+	//int suppid;
+	@ManyToOne //(cascade = CascadeType.PERSIST)
+	Category cat;
+	
+	@ManyToOne
+	Supplier supplier;
+	
 	String description;
 	@Transient
 	MultipartFile pimage;
@@ -35,8 +35,7 @@ public class Product {
 	public void setPimage(MultipartFile pimage) {
 		this.pimage = pimage;
 	}
-	@ManyToOne //(cascade = CascadeType.PERSIST)
-	Category cat;
+	
 	public int getProdid() {
 		return prodid;
 	}
@@ -73,6 +72,11 @@ public class Product {
 	public void setCat(Category cat) {
 		this.cat = cat;
 	}
-	
+	public Supplier getSupplier() {
+		return supplier;
+	}
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
 	
 }

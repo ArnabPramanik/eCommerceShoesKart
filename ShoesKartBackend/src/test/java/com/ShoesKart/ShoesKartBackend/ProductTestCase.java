@@ -11,6 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.ShoesKart.ShoesKartBackend.Dao.CategoryDao;
 import com.ShoesKart.ShoesKartBackend.Dao.ProductDao;
+import com.ShoesKart.ShoesKartBackend.Dao.SupplierDao;
 import com.ShoesKart.ShoesKartBackend.model.Product;
 
 public class ProductTestCase {
@@ -18,7 +19,8 @@ public class ProductTestCase {
 	static ProductDao productDao;
 	@Autowired
 	static CategoryDao categoryDao;
-
+	@Autowired
+	static SupplierDao supplierDao;
 	static AnnotationConfigApplicationContext context;
 
 	@BeforeClass
@@ -28,6 +30,7 @@ public class ProductTestCase {
 		context.refresh();
 		productDao = (ProductDao) context.getBean("productDao");
 		categoryDao=(CategoryDao)context.getBean("categoryDao");
+		supplierDao = (SupplierDao)context.getBean("supplierDao");
 	}
 	
 	@Test
@@ -37,7 +40,7 @@ public class ProductTestCase {
 		prd.setName("p1");
 		prd.setDescription("d1");
 		prd.setPrice(234);
-		prd.setSuppid(1);
+		prd.setSupplier(supplierDao.getById(1));
 		prd.setQuantity(20);
 		prd.setCat(categoryDao.getById(1));
 		boolean result=productDao.insertUpdate(prd);

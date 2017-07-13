@@ -48,4 +48,13 @@ public class CartDaoImpl implements CartDao {
 		
 	}
 
+	public List<Cart> getMaxcartid() {
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("from Cart ORDER BY CARTID");
+		
+		List<Cart> list=query.list();
+		session.close();
+		return list;
+	}
+
 }

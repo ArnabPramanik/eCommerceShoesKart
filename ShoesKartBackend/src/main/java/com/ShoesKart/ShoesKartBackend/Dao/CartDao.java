@@ -14,4 +14,6 @@ public interface CartDao {
 	public List<Cart> getAll(String username);
 	
 	public void delete(Cart cart);
+	
+	public List<Cart> getMaxcartid();
 }
