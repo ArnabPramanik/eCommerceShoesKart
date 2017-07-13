@@ -130,6 +130,20 @@ public class AdminController {
 	
 	@RequestMapping("/supplier/delete/{id}")
 	public String deleteSupplier(@PathVariable("id") int id){
+        List <Product> products = productDao.getAll();
+		
+		for (Product product : products){
+			
+			try{
+			if(product.getSupplier().getId() == id){
+				product.setSupplier(null);
+				productDao.insertUpdate(product);
+			}
+			}
+			catch(Exception e){
+				
+			}
+		}
 		Supplier supplier = supplierDao.getById(id);
 		supplierDao.delete(supplier);
 		return "redirect:/admin/supplier";
@@ -145,12 +159,9 @@ public class AdminController {
 		m.addAttribute("product", product);
 		m.addAttribute("prodList", products);
 		List <Category> categories = categoryDao.getAll();
-		LinkedHashMap <Integer, String> lh = new LinkedHashMap <Integer, String>();
 		List <Supplier> suppliers = supplierDao.getAll();
-		for (Supplier supplier : suppliers){
-			lh.put(supplier.getId(),supplier.getName());
-		}
-		m.addAttribute("supMap",lh);
+		
+		m.addAttribute("supList",suppliers);
 		m.addAttribute("catList",categories);
 		return "adminproduct";
 	}
@@ -176,6 +187,7 @@ public class AdminController {
 		}
 		
 		product.setCat(categoryDao.getById(product.getCat().getCatid()));
+		product.setSupplier(supplierDao.getById(product.getSupplier().getId()));
 		productDao.insertUpdate(product);
 		return "redirect:/admin/product";
 	}
@@ -187,19 +199,11 @@ public class AdminController {
 		m.addAttribute("product", product);
 		m.addAttribute("prodList",products);
 		List <Category> categories = categoryDao.getAll();
-		/*LinkedHashMap <Category, String> lh = new LinkedHashMap <Category, String>();
-		for (Category cat : categories){
-			lh.put(cat,cat.getCatname());
-			
-		}
-		m.addAttribute("catList",lh);*/
 		m.addAttribute("catList",categories);
-		LinkedHashMap <Integer, String> lh = new LinkedHashMap <Integer, String>();
+		
 		List <Supplier> suppliers = supplierDao.getAll();
-		for (Supplier supplier : suppliers){
-			lh.put(supplier.getId(),supplier.getName());
-		}
-		m.addAttribute("supMap",lh);
+		
+		m.addAttribute("supList",suppliers);
 		return "adminproduct";
 	}
 	

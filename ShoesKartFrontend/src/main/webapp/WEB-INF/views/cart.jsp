@@ -108,8 +108,9 @@
 
 				<tr>
 					<th></th>
-					<th>cartItemId</th>
-					<th>productId</th>
+					<th>CartId</th>
+					<th>CartItemId</th>
+					<th>ProductId</th>
 					<th>Name</th>
 					<th>Price</th>
 					<th>Quantity</th>
@@ -121,6 +122,7 @@
 				<c:forEach items="${cartList}" var="cartItem">
 					<tr>
 						<td><img src = "<c:url value = "/assets/images/${cartItem.prodname}.jpg"/>" height="50px" width="50px"/></td>
+						<td>${cartItem.cartid}</td>
 						<td>${cartItem.cartitemid}</td>
 						<td>${cartItem.prodid}</td>
 						<td>${cartItem.prodname }</td>

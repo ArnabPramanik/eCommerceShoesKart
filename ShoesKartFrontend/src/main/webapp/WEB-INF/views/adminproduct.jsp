@@ -158,9 +158,9 @@
 
 			<div class="form-group">
 				<label>Supplier List:</label>
-				<form:select path="suppid">
+				<form:select path="supplier.id">
 					<form:option value="0" label="------Select----" />
-					<form:options items="${supMap}" />
+					<form:options items="${supList}" itemValue = "id" itemLabel = "name" />
 				</form:select>
 			</div>
 
@@ -187,7 +187,7 @@
 						<th>Price</th>
 						<th>Quantity</th>
 						<th>Category</th>
-						<th>SupplierID</th>
+						<th>Supplier</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -201,7 +201,7 @@
 							<td>${prodItem.price }</td>
 							<td>${prodItem.quantity}</td>
 							<td>${prodItem.cat.catname}</td>
-							<td>${prodItem.suppid}</td>
+							<td>${prodItem.supplier.name}</td>
 							<td><img
 								src="<c:url value = "/assets/images/${prodItem.name}.jpg"/>"
 								height="50px" width="50px" /></td>

@@ -238,7 +238,10 @@ div.section>div>input {
 				<!-- Precios -->
 				<h6 class="title-price">PRICE</h6>
 				<h3 style="margin-top: 0px;">${product.price}</h3>
-
+				<h6 class="title-price">Supplier</h6>
+				<h3 style="margin-top: 0px;">${product.supplier.name}</h3>
+				<h6 class="title-price">Category</h6>
+				<h3 style="margin-top: 0px;">${product.cat.catname}</h3>
 				<!-- Detalles especificos del producto -->
 				<form
 					action="/ShoesKartFrontend/user/product/addtocart2/${product.prodid}">

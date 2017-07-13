@@ -73,9 +73,25 @@ public class UserController {
 
 		Product product = productDao.getById(prodid);
 
-		
+			int cartid = 0; int maxcartid = 0;
 			Cart cart = new Cart();
 			String username = (String) session.getAttribute("username");
+			List<Cart> firstcart=cartDao.getAll(username);
+			List<Cart> maxcartlist=cartDao.getMaxcartid();
+			if(firstcart.size() != 0){
+				cartid = firstcart.get(firstcart.size() - 1).getCartid();
+				cart.setCartid(cartid);
+			}
+			else{
+				if(maxcartlist.size() != 0){
+					maxcartid = maxcartlist.get(maxcartlist.size() - 1).getCartid() + 1;
+					
+				}
+				else{
+					maxcartid = 1;
+				}
+				cart.setCartid(maxcartid);
+			}
 			//cart.setQuantity(quantity);
 			cart.setStatus("N");
 			cart.setUsername(username);
@@ -98,9 +114,25 @@ public class UserController {
 
 		Product product = productDao.getById(prodid);
 		if(quantity <= product.getQuantity()){
-		
+			int cartid = 0; int maxcartid = 0;
 			Cart cart = new Cart();
 			String username = (String) session.getAttribute("username");
+			List<Cart> firstcart=cartDao.getAll(username);
+			List<Cart> maxcartlist=cartDao.getMaxcartid();
+			if(firstcart.size() != 0){
+				cartid = firstcart.get(firstcart.size() - 1).getCartid();
+				cart.setCartid(cartid);
+			}
+			else{
+				if(maxcartlist.size() != 0){
+					maxcartid = maxcartlist.get(maxcartlist.size() - 1).getCartid() + 1;
+					
+				}
+				else{
+					maxcartid = 1;
+				}
+				cart.setCartid(maxcartid);
+			}
 			cart.setQuantity(quantity);
 			cart.setStatus("N");
 			cart.setUsername(username);
