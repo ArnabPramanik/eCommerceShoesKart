@@ -93,7 +93,7 @@ public class IndexController {
 	@RequestMapping("/loginfail")
 	public String loginfail(){
 		
-		return "index";
+		return "login";
 	}
 	@RequestMapping("/login_success")
 	public String loginSuccess(HttpSession session){
